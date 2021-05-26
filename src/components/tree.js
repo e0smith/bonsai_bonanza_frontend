@@ -1,4 +1,5 @@
 class Tree {
+
     static all = []
 
     constructor({id, name, pruning, wiring, watering, repotting, propagation, disease, placement, fertilizing}) {
@@ -24,4 +25,17 @@ class Tree {
         const renderDiv = document.getElementById("rendered-tree")
         renderDiv.append(ul)
     }
+
+    static getInfo() {
+        ul.innerHTML = `<ul data-id=${tree.id}>${tree.watering}</ul>`
+        const renderDiv = document.getElementsById("rendered-tree")
+        renderDiv.append(ul)
+    }
+
+    // renderTreeInfo(){
+    //     const li = document.getElementById(`tree-${this.id}`)
+    //     const ul = document.createElement('ul')
+
+    //     this.tree.forEach
+    // }
 }
