@@ -1,17 +1,13 @@
-const apiURL = "http://localhost:3000/"
+treeURL = "http://localhost:3000/trees"
 
-document.addEventListener("DOMContentLoaded", () => {
-    fetchTrees();
+document.addEventListener('DOMContentLoaded', (e) => {
+
 })
 
-function fetchTrees() {
-    const treesContainer = document.getElementById("trees-container")
-    fetch(apiURL + "trees")
-    .then(r => r.json())
+fetch(treeURL)
+    .then(resp => resp.json())
     .then(data => {
-        data.forEach(function(tree){
-            treesContainer.innerHTML += `<li>${tree.name}</li>`
-        })
-    })
-    .catch(err => console.warn(err))
-}
+        data.forEach(tree => new Tree(tree))
+        Tree.render()
+
+})
