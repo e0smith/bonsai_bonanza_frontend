@@ -1,3 +1,5 @@
+const ul = document.createElement('ul')
+
 class Tree {
 
     static all = []
@@ -18,18 +20,16 @@ class Tree {
     }
 
     static render() {
-        const ul = document.createElement('ul')
         this.all.forEach(tree => {
-            ul.innerHTML += `<ul data-id=${tree.id}>${tree.name}</ul>`
+            ul.innerHTML += `<a data-id=${tree.id}>${tree.name}</a><br>`
         })
         const renderDiv = document.getElementById("rendered-tree")
         renderDiv.append(ul)
     }
 
     static getInfo() {
+        tree = new Tree()
         ul.innerHTML = `<ul data-id=${tree.id}>${tree.watering}</ul>`
-        const renderDiv = document.getElementsById("rendered-tree")
-        renderDiv.append(ul)
     }
 
     // renderTreeInfo(){
