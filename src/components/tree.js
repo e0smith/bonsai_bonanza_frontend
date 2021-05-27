@@ -1,4 +1,6 @@
-const ul = document.createElement('ul')
+const div = document.createElement('div')
+const showDiv = document.createElement('div')
+const renderDiv = document.getElementById("rendered-tree")
 
 class Tree {
 
@@ -21,20 +23,23 @@ class Tree {
 
     static render() {
         this.all.forEach(tree => {
-            ul.innerHTML += `<a data-id=${tree.id}>${tree.name}<br></a>`
+            div.innerHTML += `<li data-id=${tree.id}>${tree.name}</li><br>`
         })
-        const renderDiv = document.getElementById("rendered-tree")
-        renderDiv.append(ul)
+        renderDiv.append(div)
     }
 
-    static getInfo(tree) {
-        t = new Tree(tree)
-        t.render()
+    static getInfo(label) {
+        const h1 = document.createElement('h1')
+        let id = parseInt(label.dataset.id)
+        let tree = Tree.all.find(tree => tree.id === id)
+        console.log(tree)
+        h1.innerText = tree.name
+        showDiv.append(h1)
     }
 
     // renderTreeInfo(){
     //     const li = document.getElementById(`tree-${this.id}`)
-    //     const ul = document.createElement('ul')
+    //     const div = document.createElement('div')
 
     //     this.tree.forEach
     // }

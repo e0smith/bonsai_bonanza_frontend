@@ -1,7 +1,6 @@
 treeURL = "http://localhost:3000/trees"
 document.addEventListener('DOMContentLoaded', () => {
     fetchTrees()
-    getTreeInfo()
 })
 
 function fetchTrees() {
@@ -10,12 +9,13 @@ function fetchTrees() {
     .then(data => {
         data.forEach(tree => new Tree(tree))
         Tree.render()
+        getTreeInfo()
 })
 }
 
 function getTreeInfo() {
-    let labels = document.querySelectorAll('a')
+    let labels = document.querySelectorAll('li')
     for(let label of labels) {
-        label.addEventListener('click', Tree.getInfo)
+        label.addEventListener('click', () => Tree.getInfo(label))
     }
 }
