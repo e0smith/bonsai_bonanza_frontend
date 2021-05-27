@@ -66,7 +66,7 @@ class Tree {
         // styling
         div.style.display = "none"
 
-        ?
+        
         button.addEventListener('click', function(){
             showDiv.innerHTML = ""
             div.style.display = ""
