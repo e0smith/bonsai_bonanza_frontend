@@ -29,12 +29,28 @@ class Tree {
     }
 
     static getInfo(label) {
-        const h1 = document.createElement('h1')
+        // find tree
         let id = parseInt(label.dataset.id)
         let tree = Tree.all.find(tree => tree.id === id)
-        console.log(tree)
+
+        // create all elements
+        let wateringP = document.createElement('p')
+        let diseaseP = document.createElement('p')
+        const h1 = document.createElement('h1')
+
+        // add innerText
         h1.innerText = tree.name
-        showDiv.append(h1)
+        wateringP.innerText = "Watering: " + tree.watering
+        diseaseP.innerText = tree.disease
+
+        // append everything
+        renderDiv.append(showDiv)
+        showDiv.append(h1, wateringP, diseaseP)
+
+        // styling
+        div.style.display = "none"
+
+        // create home button
     }
 
     // renderTreeInfo(){
@@ -44,3 +60,7 @@ class Tree {
     //     this.tree.forEach
     // }
 }
+
+
+// showDiv = ""
+// div.style.display = ""
