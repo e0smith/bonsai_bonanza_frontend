@@ -35,22 +35,35 @@ class Tree {
 
         // create all elements
         let wateringP = document.createElement('p')
+        let pruningP = document.createElement('p')
+        let wiringP = document.createElement('p')
+        let repottingP = document.createElement('p')
+        let propagationP = document.createElement('p')
         let diseaseP = document.createElement('p')
+        let placementP = document.createElement('p')
+        let fertilizingP = document.createElement('p')
         const h1 = document.createElement('h1')
 
         // add innerText
         h1.innerText = tree.name
         wateringP.innerText = "Watering: " + tree.watering
-        diseaseP.innerText = tree.disease
+        pruningP.innerText = "Pruning: " + tree.pruning
+        wiringP.innerText = "Wiring: " + tree.wiring
+        repottingP.innerText = "Repotting: " + tree.repotting
+        propagationP.innerText = "Propagation: "  + tree.propagation
+        diseaseP.innerText = "Disease: " + tree.disease
+        placementP.innerText = "Placement: " + tree.placement
+        fertilizingP.innerText = "Fertilization: " + tree.fertilizing
 
         // append everything
         renderDiv.append(showDiv)
-        showDiv.append(h1, wateringP, diseaseP)
+        showDiv.append(h1, wateringP, pruningP, wiringP, repottingP, propagationP, diseaseP, placementP, fertilizingP)
 
         // styling
         div.style.display = "none"
 
         // create home button
+
     }
 
     // renderTreeInfo(){
