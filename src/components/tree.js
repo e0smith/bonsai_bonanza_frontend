@@ -21,14 +21,15 @@ class Tree {
 
     static render() {
         this.all.forEach(tree => {
-            ul.innerHTML += `<a data-id=${tree.id}>${tree.name}</a><br>`
+            ul.innerHTML += `<a data-id=${tree.id}>${tree.name}<br></a>`
         })
         const renderDiv = document.getElementById("rendered-tree")
         renderDiv.append(ul)
     }
 
     static getInfo(tree) {
-        ul.innerHTML = `<a data-id=${tree.id}>${tree.name}</a><br>`
+        t = new Tree(tree)
+        t.render()
     }
 
     // renderTreeInfo(){
