@@ -3,9 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchTrees()
     let labels = document.querySelectorAll('a')
     for(let label of labels) {
-        label.addEventListener('click', Tree.getInfo, (e) => {
-            console.log(e.target)
-        })
+        label.addEventListener('click', Tree.getInfo)
     }
 })
 

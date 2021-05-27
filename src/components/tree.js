@@ -27,9 +27,8 @@ class Tree {
         renderDiv.append(ul)
     }
 
-    static getInfo() {
-        tree = new Tree()
-        ul.innerHTML = `<ul data-id=${tree.id}>${tree.watering}</ul>`
+    static getInfo(tree) {
+        ul.innerHTML = `<a data-id=${tree.id}>${tree.name}</a><br>`
     }
 
     // renderTreeInfo(){
