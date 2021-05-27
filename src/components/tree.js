@@ -1,7 +1,6 @@
 const div = document.createElement('div')
 const showDiv = document.createElement('div')
 const renderDiv = document.getElementById("rendered-tree")
-
 class Tree {
 
     static all = []
@@ -55,25 +54,24 @@ class Tree {
         placementP.innerText = "Placement: " + tree.placement
         fertilizingP.innerText = "Fertilization: " + tree.fertilizing
 
+        // home button
+        let button = document.createElement('button')
+        button.innerText = "Home"
+
         // append everything
         renderDiv.append(showDiv)
-        showDiv.append(h1, wateringP, pruningP, wiringP, repottingP, propagationP, diseaseP, placementP, fertilizingP)
+        showDiv.append(h1, button, wateringP, pruningP, wiringP, repottingP, 
+            propagationP, diseaseP, placementP, fertilizingP)
 
         // styling
         div.style.display = "none"
 
-        // create home button
+        ?
+        button.addEventListener('click', function(){
+            showDiv.innerHTML = ""
+            div.style.display = ""
+        })
 
     }
 
-    // renderTreeInfo(){
-    //     const li = document.getElementById(`tree-${this.id}`)
-    //     const div = document.createElement('div')
-
-    //     this.tree.forEach
-    // }
 }
-
-
-// showDiv = ""
-// div.style.display = ""
