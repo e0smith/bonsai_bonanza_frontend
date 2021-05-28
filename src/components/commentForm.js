@@ -5,20 +5,20 @@ class CommentForm {
         this.handleDelete = this.handleDelete.bind(this)
     }
 
-    // static addCreateForm(){
-    //     const formContainer = document.getElementById("form-container");
-    //     const form = document.createElement('form');
-    //     form.innerHTML = `<input id="comment-input" placeholder='comment' type='text'/><br>
-    //     <input id="comment-submit" value='Post Comment' type='submit'/>`
-    //     formContainer.append(form)
+    static addCommentForm(){
+        const formContainer = document.getElementById("form-container");
+        const form = document.createElement('form');
+        form.innerHTML = `<input id="comment-input" placeholder='comment' type='text'/><br>
+        <input id="comment-submit" value='Post Comment' type='submit'/>`
+        formContainer.append(form)
     
-    //     form.addEventListener("submit", this.handleSubmit)
-    //     // label.addEventListener('click', () => createComment(commentInput))
-    // }
+        form.addEventListener("submit", this.handleSubmit)
+        // addEventListener('click', () => createComment(commentInput))
+    }
 
     static handleSubmit(event) {
         event.preventDefault()
         const commentInput = event.target[0]
-        createComment(commentInput)
+        Comment.createComment(commentInput)
     }
 }

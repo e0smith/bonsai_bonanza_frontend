@@ -22,4 +22,4 @@ function getTreeInfo() {
     }
 }
 
-// [...document.getElementsByTagName('li')].find(element => element.dataset.id == 4);
+// [...document.getElementsByTagName('li')].find(element => element.dataset.id);

@@ -53,7 +53,9 @@ class Tree {
         diseaseP.innerText = "Disease: " + tree.disease
         placementP.innerText = "Placement: " + tree.placement
         fertilizingP.innerText = "Fertilization: " + tree.fertilizing
-    
+        CommentForm.addCommentForm()
+        // Comment.getComments(label)
+
         // home button
         let button = document.createElement('button')
         button.innerText = "Home"

@@ -7,31 +7,10 @@ class Comment {
 
         Comment.all.push(this)
     }
-    
-    static render() {
-        return(`<li id="comment-${this.id}" data-id=${this.id}>
-        <span>${this.comment}</span>
-        <button data-action='delete'>X</button>
-        </li>`
-        )
-    }
 
-    static getComments(label){
-        let id = parseInt(label.dataset.id)
-        fetch(`${treeURL}/${id}/comments`)
-        .then(r => r.json())
-        .then(comments => {
-            comments.forEach(comment => {
-                const c = new Comment(comment)
-                Comment.render()
-            })
-        })
-        .catch(error => console.error(error))
-    }
-
-    static createComment(label, commentInput) {
-        let id = parseInt(label.dataset.id)
-        console.log(commentInput.value)
+    static createComment(commentInput) {
+        // let id = parseInt(label.dataset.id)
+        console.log("comment input: " + commentInput.value)
         fetch(`${treeURL}/${id}/comments`, {
             method: "POST",
             headers: {
@@ -45,7 +24,7 @@ class Comment {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log("this is the second .then", data)
+            console.log(".then(2): ", data)
             if (data.status === 201){
                 console.log("success")
             } else {
@@ -53,6 +32,27 @@ class Comment {
             }
             commentInput.value = ""
         })
-        .catch(err => console.error("this is the catch", err))
+        .catch(err => console.error(".catch: ", err))
     }
+
+    // static render() {
+    //     return(`<li id="comment-${this.id}" data-id=${this.id}>
+    //     <span>${this.comment}</span>
+    //     <button data-action='delete'>X</button>
+    //     </li>`
+    //     )
+    // }
+
+    // static getComments(label){
+    //     let id = parseInt(label.dataset.id)
+    //     fetch(`${treeURL}/${id}/comments`)
+    //     .then(r => r.json())
+    //     .then(comments => {
+    //         comments.forEach(comment => {
+    //             const c = new Comment(comment)
+    //             Comment.render()
+    //         })
+    //     })
+    //     .catch(error => console.error(error))
+    // }
 }
