@@ -5,9 +5,10 @@ class CommentForm {
         this.handleDelete = this.handleDelete.bind(this)
     }
 
-    static addCommentForm(){
+    static addCommentForm(id){
         const formContainer = document.getElementById("form-container");
         const form = document.createElement('form');
+        form.dataset.id = id
         form.innerHTML = `<input id="comment-input" placeholder='comment' type='text'/><br>
         <input id="comment-submit" value='Post Comment' type='submit'/>`
         formContainer.append(form)
@@ -19,6 +20,6 @@ class CommentForm {
     static handleSubmit(event) {
         event.preventDefault()
         const commentInput = event.target[0]
-        Comment.createComment(commentInput)
+        Comment.createComment(event, commentInput)
     }
 }

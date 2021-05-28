@@ -53,7 +53,7 @@ class Tree {
         diseaseP.innerText = "Disease: " + tree.disease
         placementP.innerText = "Placement: " + tree.placement
         fertilizingP.innerText = "Fertilization: " + tree.fertilizing
-        CommentForm.addCommentForm()
+        CommentForm.addCommentForm(id)
         // Comment.getComments(label)
 
         // home button

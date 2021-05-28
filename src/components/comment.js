@@ -8,9 +8,9 @@ class Comment {
         Comment.all.push(this)
     }
 
-    static createComment(commentInput) {
-        // let id = parseInt(label.dataset.id)
-        console.log("comment input: " + commentInput.value)
+    static createComment(event, commentInput) {
+        let id = event.target.dataset.id
+        console.log("comment input.value: " + commentInput.value)
         fetch(`${treeURL}/${id}/comments`, {
             method: "POST",
             headers: {
@@ -18,8 +18,9 @@ class Comment {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                comment: commentInput.value,
+                comment: {comment: commentInput.value,
                 tree_id: id
+                }
             })
         })
         .then(resp => resp.json())
