@@ -54,6 +54,7 @@ class Tree {
         placementP.innerText = "Placement: " + tree.placement
         fertilizingP.innerText = "Fertilization: " + tree.fertilizing
         const f = CommentForm.addCreateForm()
+        CommentAdapter.getComments(label)
         // home button
         let button = document.createElement('button')
         button.innerText = "Home"
@@ -61,7 +62,7 @@ class Tree {
         // append everything
         renderDiv.append(showDiv)
         showDiv.append(h1, button, wateringP, pruningP, wiringP, repottingP, 
-            propagationP, diseaseP, placementP, fertilizingP, f)
+            propagationP, diseaseP, placementP, fertilizingP,f )
 
         // styling
         div.style.display = "none"

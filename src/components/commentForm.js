@@ -7,22 +7,46 @@ class CommentForm {
 
     static addCreateForm(){
         const formContainer = document.getElementById("form-container");
-        console.log(formContainer)
         const form = document.createElement('form');
-        console.log(form)
         form.innerHTML = `<input id="comment-input" placeholder='comment' type='text'/><br>
         <input id="comment-submit" value='Post Comment' type='submit'/>`
         formContainer.append(form)
     
-        form.addEventListener("submit", this.handleSubmit)
-    }
+        form.addEventListener("submit", this.handleSubmit)    }
 
     static handleSubmit(event) {
         event.preventDefault()
         const commentInput = event.target[0]
-        commentAdapter.createComment(commentInput)
+        createComment(commentInput)
+        // label.addEventListener('click', () => createComment(label, commentInput))
     }
 
+    static createComment(label, commentInput) {
+
+        let id = parseInt(label.dataset.id)
+        console.log(commentInput.value)
+        fetch(`${treeURL}/${id}/comments`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                comment: commentInput.value,
+                tree_id: id
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log("this is the second .then", data)
+            if (data.status === 201){
+                console.log("success")
+            } else {
+                alert(data.errors)
+            }
+            commentInput.value = ""
+        })
+        .catch(err => console.error("this is the catch", err))
     // listenDelete(){
     //     const commentContainer = document.getElementById("comments-container");
     //     commentsContainer.addEventListener("click", this.handleDelete)

@@ -17,8 +17,11 @@ function fetchTrees() {
 function getTreeInfo() {
     let labels = document.querySelectorAll('li')
     for(let label of labels) {
-        label.addEventListener('click', () => Tree.getInfo(label))
+        console.log(label)
+        label.addEventListener('click', Tree.getInfo(label))
     }
-
 }
 
+function postComment() {
+
+}
