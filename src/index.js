@@ -18,10 +18,8 @@ function getTreeInfo() {
     let labels = document.querySelectorAll('li')
     for(let label of labels) {
         console.log(label)
-        label.addEventListener('click', Tree.getInfo(label))
+        label.addEventListener('click', () => Tree.getInfo(label))
     }
 }
 
-function postComment() {
-
-}
+// [...document.getElementsByTagName('li')].find(element => element.dataset.id == 4);

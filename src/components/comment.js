@@ -7,6 +7,7 @@ class Comment {
 
         Comment.all.push(this)
     }
+    
     static render() {
         return(`<li id="comment-${this.id}" data-id=${this.id}>
         <span>${this.comment}</span>
@@ -28,4 +29,30 @@ class Comment {
         .catch(error => console.error(error))
     }
 
+    static createComment(label, commentInput) {
+        let id = parseInt(label.dataset.id)
+        console.log(commentInput.value)
+        fetch(`${treeURL}/${id}/comments`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                comment: commentInput.value,
+                tree_id: id
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log("this is the second .then", data)
+            if (data.status === 201){
+                console.log("success")
+            } else {
+                alert(data.errors)
+            }
+            commentInput.value = ""
+        })
+        .catch(err => console.error("this is the catch", err))
+    }
 }
