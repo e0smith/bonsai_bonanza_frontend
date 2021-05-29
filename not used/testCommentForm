@@ -13,25 +13,4 @@
     //     btn.addEventListener('click', this.makeCommentForm)
     // }
 
-    // makeComentForm() {
-    //     const btn = document.getElementsById('comment-form-btn')
-    //     btn.classList.add("hidden")
-    //     const formContainer = document.getElementById('form-container')
-    //     const form = document.createElement('form');
-    //     form.id = 'form'
-
-    //     const commentLabel = document.createElement('label')
-    //     commentLabel.innerText = "Make Comment:"
-    //     const commentInput = document.createElement('input')
-    //     commentInput.id = 'comment-input'
-    //     commentInput.type = 'text'
-        
-    //     const commentSubmit = document.createElement('input')
-    //     conmmentSubmit.type = 'submit'
-    //     commentSubmit.value = 'Post Comment'
-    //     form.append(commentLabel, commentInput)
-    //     formContainer.append(form)
-
-    //     form.addEventListener('submit', )
-
     // }

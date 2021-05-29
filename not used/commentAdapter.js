@@ -1,20 +1,6 @@
 
 // class CommentAdapter {
 
-//     static getComments(label){
-//         let id = parseInt(label.dataset.id)
-//         fetch(`${treeURL}/${id}/comments`)
-//         .then(r => r.json())
-//         .then(comments => {
-//             comments.forEach(comment => {
-//                 const c = new Comment(comment)
-//                 Comment.render()
-//             })
-//         })
-//         .catch(error => console.error(error))
-//     }
-
-
 //     }
 
     // deleteComment(li) {
