@@ -1,0 +1,54 @@
+
+// class CommentAdapter {
+
+//     }
+
+    // deleteComment(li) {
+    //     fetch(`${treeURL}/${li.dataset.id}/comments`, {
+    //         method: "DELETE"
+    //     })
+    //     .then(resp => {
+    //         console.log(resp)
+    //         return resp.json()
+    //     })
+    //     .then(data => {
+    //         if (data.message === "Successfully deleted"){
+    //             li.remove()
+    //         } else {
+    //             alert(data.message)
+    //         }
+    //     })
+    //     .catch(err => console.error(err))
+    // }
+// }
+
+
+    // static getComments(id) {
+    //     // let id = parseInt(label.dataset.id)
+    //     fetch(`${treeURL}/${id}/comments`)
+    //     .then(r => r.json())
+    //     .then(comments => {
+    //         comments.forEach(comment => new Comment(comment.id, comment.comment, comment.tree_id))
+    //     })
+    //     .catch(error => console.error(error))
+    // }
+
+        // listenDelete(){
+    //     const commentContainer = document.getElementById("comments-container");
+    //     commentsContainer.addEventListener("click", this.handleDelete)
+    // }
+    
+    // handleDelete(e){
+    //     const li = e.target.parentElement
+    //             commentAdapter.deleteComment(li)
+    // }
+
+    // showCommentForm() {
+    //     const btn = document.getElementById('comment-form-btn')
+    //     btn.addEventListener('click', this.makeCommentForm)
+    // }
+
+    // }
+
+
+    // [...document.getElementsByTagName('li')].find(element => element.dataset.id);

@@ -1,4 +1,5 @@
 class Comment {
+    
     static all = []
     constructor(id, comment, tree_id) {
         this.id = id
@@ -8,25 +9,14 @@ class Comment {
         Comment.all.push(this)
     }
 
-    // static getComments(id) {
-    //     // let id = parseInt(label.dataset.id)
-    //     fetch(`${treeURL}/${id}/comments`)
-    //     .then(r => r.json())
-    //     .then(comments => {
-    //         comments.forEach(comment => new Comment(comment.id, comment.comment, comment.tree_id))
-    //     })
-    //     .catch(error => console.error(error))
-    // }
-
     static render(id) {
-        let a = document.createElement('li')
+        let a = document.createElement('ul')
         let treeId = id
         let x = Comment.all.filter(comment => comment.id.tree_id == treeId)
         let y = x.map(c => c.id.comment)
-        let z = y.forEach(c => a.innerHTML += `<li data-id=${treeId}>
-        <span>${c}</span>
-        <button data-action='delete'>X</button>
-        </li>`)
+        y.forEach(c => a.innerHTML += `<ul data-id=${treeId}>
+        <span>${c}</span><button data-action='delete'>X</button>
+        </ul><br>`)
         showDiv.append(a)
     }
 

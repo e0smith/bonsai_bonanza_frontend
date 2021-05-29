@@ -22,4 +22,3 @@ function getTreeInfo() {
     }
 }
 
-// [...document.getElementsByTagName('li')].find(element => element.dataset.id);

@@ -14,7 +14,6 @@ class CommentForm {
         formContainer.append(form)
     
         form.addEventListener("submit", this.handleSubmit)
-        // addEventListener('click', () => createComment(commentInput))
     }
 
     static handleSubmit(event) {

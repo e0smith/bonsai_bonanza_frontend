@@ -31,7 +31,6 @@ class Tree {
         // find tree
         let id = parseInt(label.dataset.id)
         let tree = Tree.all.find(tree => tree.id === id)
-        // let comment = Comment.all.find(tree => tree.id == tree_id)
 
         // create all elements
         let wateringP = document.createElement('p')
@@ -42,7 +41,6 @@ class Tree {
         let diseaseP = document.createElement('p')
         let placementP = document.createElement('p')
         let fertilizingP = document.createElement('p')
-        // let commentP = document.createElement('p')
         const h1 = document.createElement('h1')
 
 
@@ -56,7 +54,6 @@ class Tree {
         diseaseP.innerText = "Disease: " + tree.disease
         placementP.innerText = "Placement: " + tree.placement
         fertilizingP.innerText = "Fertilization: " + tree.fertilizing
-        // commentP.innerText = comment.comment
 
 
         // home button
@@ -68,6 +65,10 @@ class Tree {
         showDiv.append(h1, button, wateringP, pruningP, wiringP, repottingP, 
             propagationP, diseaseP, placementP, fertilizingP)
 
+        //comment form/render
+        Comment.render(id)
+        CommentForm.addCommentForm(id)
+        
         // styling
         div.style.display = "none"
 
@@ -76,11 +77,6 @@ class Tree {
             showDiv.innerHTML = ""
             div.style.display = ""
         })
-
-        //comment form/render
-        // Comment.getComments(id)
-        Comment.render(id)
-        CommentForm.addCommentForm(id)
 
     }
 
