@@ -21,6 +21,7 @@ class Comment {
     }
 
     static createComment(event, commentInput) {
+        let label = event.target
         let id = event.target.dataset.id
         fetch(`${treeURL}/${id}/comments`, {
             method: "POST",
@@ -41,15 +42,20 @@ class Comment {
             if (data.status === 201){
                 console.log("success")
             } else {
-                alert(data.errors)
+                console.log("errors" + data.errors)
             }
             commentInput.value = ""
         })
         .catch(err => console.error(".catch: ", err))
+
+        showDiv.innerHTML = ""
+        div.style.display = ""
+        Tree.pageRefresh(label)
     }
 
     static deleteComment(id, com) {
-            let treeId = id
+            let label = id
+            let treeId = parseInt(label.dataset.id)
             let commentId = parseInt(com.dataset.id)
         fetch(`${treeURL}/${treeId}/comments/${commentId}`, {
             method: "DELETE"
@@ -66,6 +72,10 @@ class Comment {
             }
         })
         .catch(err => console.error(err))
+
+        showDiv.innerHTML = ""
+        div.style.display = ""
+        Tree.pageRefresh(label)
     }
 
     static listenDelete(id){

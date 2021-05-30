@@ -64,7 +64,7 @@ class Tree {
 
         //comment form/render
         Comment.render(id)
-        Comment.listenDelete(id)
+        Comment.listenDelete(label)
         CommentForm.addCommentForm(id)
         
         // styling
@@ -72,10 +72,16 @@ class Tree {
 
         // homebutton logic
         button.addEventListener('click', function(){
-            showDiv.innerHTML = ""
-            div.style.display = ""
+            Tree.clearHTML()
         })
-
     }
 
+    static clearHMTL() {
+        showDiv.innerHTML = ""
+        div.style.display = ""
+    }
+
+    static pageRefresh(label) {
+        setTimeout(Tree.getInfo(label), 1000);
+    }
 }

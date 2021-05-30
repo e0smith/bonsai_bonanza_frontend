@@ -24,4 +24,3 @@ function getTreeInfo() {
         label.addEventListener('click', () => Tree.getInfo(label))
     }
 }
-

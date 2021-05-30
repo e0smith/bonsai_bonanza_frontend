@@ -6,12 +6,12 @@ class CommentForm {
     }
 
     static addCommentForm(id){
-        const formContainer = document.getElementById("form-container");
         const form = document.createElement('form');
         form.dataset.id = id
         form.innerHTML = `<input id="comment-input" placeholder='comment' type='text'/><br>
         <input id="comment-submit" value='Post Comment' type='submit'/>`
-        formContainer.append(form)
+        renderDiv.append(showDiv)
+        showDiv.append(form)
     
         form.addEventListener("submit", this.handleSubmit)
     }
