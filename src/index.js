@@ -1,4 +1,7 @@
-treeURL = "http://localhost:3000/trees"
+const treeURL = "http://localhost:3000/trees"
+const div = document.createElement('div')
+const showDiv = document.createElement('div')
+const renderDiv = document.getElementById("rendered-tree")
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchTrees()

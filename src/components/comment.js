@@ -1,5 +1,5 @@
 class Comment {
-    
+
     static all = []
     constructor(id, comment, tree_id) {
         this.id = id
@@ -13,10 +13,10 @@ class Comment {
         let a = document.createElement('ul')
         let treeId = id
         let x = Comment.all.filter(comment => comment.id.tree_id == treeId)
-        let y = x.map(c => c.id.comment)
-        y.forEach(c => a.innerHTML += `<ul data-id=${treeId}>
-        <span>${c}</span><button data-action='delete'>X</button>
-        </ul><br>`)
+        let y = x.map(c => c.id)
+        y.forEach(c => a.innerHTML += `<ol data-id=${c.id}>
+        <span>${c.comment}</span><button data-action='delete'>X</button>
+        </ol><br>`)
         showDiv.append(a)
     }
 
@@ -46,5 +46,33 @@ class Comment {
             commentInput.value = ""
         })
         .catch(err => console.error(".catch: ", err))
+    }
+
+    static deleteComment(id, com) {
+            let treeId = id
+            let commentId = parseInt(com.dataset.id)
+        fetch(`${treeURL}/${treeId}/comments/${commentId}`, {
+            method: "DELETE"
+        })
+        .then(resp => {
+            console.log(resp)
+            return resp.json()
+        })
+        .then(data => {
+            if (data.message === "Successfully deleted"){
+                com.remove()
+            } else {
+                alert(data.message)
+            }
+        })
+        .catch(err => console.error(err))
+    }
+
+    static listenDelete(id){
+        let coms = document.querySelectorAll('ol')
+        for(let com of coms) {
+            console.log(com)
+            com.addEventListener('click', () => Comment.deleteComment(id, com))
+        }
     }
 }

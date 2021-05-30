@@ -1,6 +1,3 @@
-const div = document.createElement('div')
-const showDiv = document.createElement('div')
-const renderDiv = document.getElementById("rendered-tree")
 class Tree {
 
     static all = []
@@ -67,6 +64,7 @@ class Tree {
 
         //comment form/render
         Comment.render(id)
+        Comment.listenDelete(id)
         CommentForm.addCommentForm(id)
         
         // styling
