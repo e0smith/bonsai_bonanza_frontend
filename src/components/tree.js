@@ -19,7 +19,8 @@ class Tree {
 
     static render() {
         this.all.forEach(tree => {
-            div.innerHTML += `<li data-id=${tree.id}>${tree.name}</li><br>`
+            // debugger
+                div.innerHTML += `<li data-id=${tree.id}>${tree.name}</li><br>`;
         })
         renderDiv.append(div)
     }
@@ -39,7 +40,7 @@ class Tree {
         let placementP = document.createElement('p')
         let fertilizingP = document.createElement('p')
         const h1 = document.createElement('h1')
-
+        let commentsP = document.createElement('p')
 
         // add innerText
         h1.innerText = tree.name
@@ -51,7 +52,7 @@ class Tree {
         diseaseP.innerText = "Disease: " + tree.disease
         placementP.innerText = "Placement: " + tree.placement
         fertilizingP.innerText = "Fertilization: " + tree.fertilizing
-
+        commentsP.innerText = "Comments: "
 
         // home button
         let button = document.createElement('button')
@@ -60,7 +61,7 @@ class Tree {
         // append everything
         renderDiv.append(showDiv)
         showDiv.append(h1, button, wateringP, pruningP, wiringP, repottingP, 
-            propagationP, diseaseP, placementP, fertilizingP)
+            propagationP, diseaseP, placementP, fertilizingP, commentsP)
 
         //comment form/render
         Comment.render(id)
@@ -72,16 +73,8 @@ class Tree {
 
         // homebutton logic
         button.addEventListener('click', function(){
-            Tree.clearHTML()
+                showDiv.innerHTML = ""
+                div.style.display = ""
         })
-    }
-
-    static clearHMTL() {
-        showDiv.innerHTML = ""
-        div.style.display = ""
-    }
-
-    static pageRefresh(label) {
-        setTimeout(Tree.getInfo(label), 1000);
     }
 }
