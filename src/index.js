@@ -2,6 +2,7 @@ const treeURL = "http://localhost:3000/trees"
 const div = document.createElement('div')
 const showDiv = document.createElement('div')
 const renderDiv = document.getElementById("rendered-tree")
+const deleteButton = document.getElementsByClassName('delete-button')
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchTrees()
@@ -23,4 +24,14 @@ function getTreeInfo() {
         console.log(label)
         label.addEventListener('click', () => Tree.getInfo(label))
     }
+}
+
+function deleteListen(id) {
+    let a = Comment.all 
+    Array.from(deleteButton).forEach(function(e) {
+        e.addEventListener('click', () => {
+            let com = e.id
+            Comment.deleteComment(id, com)
+        })
+    });
 }

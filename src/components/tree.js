@@ -2,7 +2,7 @@ class Tree {
 
     static all = []
 
-    constructor({id, name, pruning, wiring, watering, repotting, propagation, disease, placement, fertilizing, comments}) {
+    constructor({id, name, pruning, wiring, watering, repotting, propagation, disease, placement, fertilizing, image, comments}) {
         this.id = id
         this.name = name
         this.pruning = pruning
@@ -13,6 +13,7 @@ class Tree {
         this.disease = disease
         this.placement = placement
         this.fertilizing = fertilizing
+        this.image = image
         this.comments = comments.map(c => new Comment(c))
         Tree.all.push(this)
     }
@@ -41,6 +42,10 @@ class Tree {
         let fertilizingP = document.createElement('p')
         const h1 = document.createElement('h1')
         let commentsP = document.createElement('p')
+        // image
+        var imageURL = tree.image
+        var img = document.createElement('img')
+        img.src = imageURL
 
         // add innerText
         h1.innerText = tree.name
@@ -54,18 +59,19 @@ class Tree {
         fertilizingP.innerText = "Fertilization: " + tree.fertilizing
         commentsP.innerText = "Comments: "
 
+
         // home button
         let button = document.createElement('button')
         button.innerText = "Home"
 
         // append everything
         renderDiv.append(showDiv)
-        showDiv.append(h1, button, wateringP, pruningP, wiringP, repottingP, 
+        showDiv.append(h1, button, img, wateringP, pruningP, wiringP, repottingP, 
             propagationP, diseaseP, placementP, fertilizingP, commentsP)
 
         //comment form/render
         Comment.render(id)
-        Comment.listenDelete(label)
+        deleteListen(id)
         CommentForm.addCommentForm(id)
         
         // styling
