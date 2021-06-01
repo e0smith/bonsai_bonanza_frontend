@@ -45,8 +45,6 @@ class Comment {
         .then(data => {
             console.log(".then(2): ", data)
             let comments = document.getElementById("comment-container")
-            // let x = `${data.comment}`
-            // comments.append(x)
             comments.innerHTML += `<ol id="comment" data-id=${data.id}>
             <span>${data.comment + "    "}</span> 
             <button class="delete-button" id=${data.id} data-action='delete'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
