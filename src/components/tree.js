@@ -20,7 +20,6 @@ class Tree {
 
     static render() {
         this.all.forEach(tree => {
-            // debugger
                 div.innerHTML += `<li data-id=${tree.id}>${tree.name}</li><br>`;
         })
         renderDiv.append(div)
@@ -64,12 +63,13 @@ class Tree {
         button.innerText = "Home"
 
         // append everything
+        showDiv.dataset.id = id
         renderDiv.append(showDiv)
         showDiv.append(h1, button, img, wateringP, pruningP, wiringP, repottingP, propagationP, diseaseP, placementP, fertilizingP, commentsP)
 
         //comment form/render
         Comment.render(id)
-        deleteListen(id)
+        // deleteListen(id)
         CommentForm.addCommentForm(id)
         
         // styling

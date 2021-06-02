@@ -1,7 +1,7 @@
 class Comment {
 
     static all = []
-    constructor(id, comment, tree_id) {
+    constructor({id, comment, tree_id}) {
         this.id = id
         this.comment = comment
         this.tree_id = tree_id
@@ -12,21 +12,26 @@ class Comment {
     static render(id) {
         let a = document.createElement('ul')
         a.id = "comment-container"
+        // used for fetch call
+        a.addEventListener('click', (e) => {
+            if(e.target.className === "delete-button") {
+                let comment = Comment.all.find((comment) => {return(comment.id == e.target.parentElement.dataset.id)})
+                e.target.parentElement.remove()
+                comment.deleteComment()
+            }
+        })
+        // renders comment
         let treeId = id
-        let x = Comment.all.filter(comment => comment.id.tree_id == treeId)
-        let y = x.map(c => c.id)
-        y.forEach(c => a.innerHTML += `<ol id="comment" data-id=${c.id}>
+        let x = Comment.all.filter(comment => comment.tree_id == treeId)
+        x.forEach(c => a.innerHTML += `<ol id="comment" data-id=${c.id}>
             <span>${c.comment + "    "}</span> 
-            <button class="delete-button" id=${c.id} data-action='delete'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" "viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg></button>
+            <button class="delete-button" data-id=${c.id} data-action='delete'>&#x1F5D1;</button>
             </ol><br>`)
         showDiv.append(a)
     }
 
     static createComment(event, commentInput) {
-        let label = event.target
+        // let label = event.target
         let id = event.target.dataset.id
         fetch(`${treeURL}/${id}/comments`, {
             method: "POST",
@@ -47,18 +52,15 @@ class Comment {
             let comments = document.getElementById("comment-container")
             comments.innerHTML += `<ol id="comment" data-id=${data.id}>
             <span>${data.comment + "    "}</span> 
-            <button class="delete-button" id=${data.id} data-action='delete'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-            </svg></button>
+            <button class="delete-button" data-id=${data.id} data-action='delete'>&#x1F5D1;</button>
             </ol><br>`
             commentInput.value = ""
         })
         .catch(err => console.error(".catch: ", err))
     }
 
-    static deleteComment(id, com) {
-        fetch(`${treeURL}/${id}/comments/${com}`, {
+    deleteComment() {
+        fetch(`${treeURL}/${this.tree_id}/comments/${this.id}`, {
             method: "DELETE"
         })
         .then(resp => {
@@ -71,7 +73,6 @@ class Comment {
             }
         })
         .catch(err => console.error(err))
-        let comments = document.getElementById('comment-container')
-        comments.removeChild(`data-id=${com}`)
     }
 }
+

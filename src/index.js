@@ -26,12 +26,3 @@ function getTreeInfo() {
     }
 }
 
-function deleteListen(id) {
-    let a = Comment.all 
-    Array.from(deleteButton).forEach(function(e) {
-        e.addEventListener('click', () => {
-            let com = e.id
-            Comment.deleteComment(id, com)
-        })
-    });
-}
