@@ -15,7 +15,8 @@ class Comment {
         // used for fetch call
         a.addEventListener('click', (e) => {
             if(e.target.className === "delete-button") {
-                let comment = Comment.all.find((comment) => {return(comment.id == e.target.parentElement.dataset.id)})
+                let comment = Comment.all.find((comment) => 
+                {return(comment.id == e.target.parentElement.dataset.id)})
                 e.target.parentElement.remove()
                 comment.deleteComment()
             }
@@ -57,6 +58,7 @@ class Comment {
             commentInput.value = ""
         })
         .catch(err => console.error(".catch: ", err))
+        alert("Comment Created.")
     }
 
     deleteComment() {
@@ -73,6 +75,21 @@ class Comment {
             }
         })
         .catch(err => console.error(err))
+        alert("Comment Deleted.")
     }
-}
 
+    static addCommentForm(id){
+        const form = document.createElement('form');
+        form.dataset.id = id
+        form.innerHTML = `<input id="comment-input" placeholder='comment' type='text'/><br>
+        <input id="comment-submit" value='Post Comment' type='submit'/>`
+        renderDiv.append(showDiv)
+        showDiv.append(form)
+    
+        form.addEventListener("submit", (event) => {
+            event.preventDefault()
+            const commentInput = event.target[0]
+            Comment.createComment(event, commentInput)
+        })
+    } 
+}

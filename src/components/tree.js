@@ -17,14 +17,14 @@ class Tree {
         this.comments = comments.map(c => new Comment(c))
         Tree.all.push(this)
     }
-
+// try sort before forEach
     static render() {
         this.all.forEach(tree => {
                 div.innerHTML += `<li data-id=${tree.id}>${tree.name}</li><br>`;
         })
         renderDiv.append(div)
     }
-
+// change to instance method (maybe)
     static getInfo(label) {
         // find tree
         let id = parseInt(label.dataset.id)
@@ -70,7 +70,7 @@ class Tree {
         //comment form/render
         Comment.render(id)
         // deleteListen(id)
-        CommentForm.addCommentForm(id)
+        Comment.addCommentForm(id)
         
         // styling
         div.style.display = "none"
