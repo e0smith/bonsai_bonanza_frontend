@@ -14,9 +14,11 @@ class Comment {
         a.id = "comment-container"
         // used for fetch call
         a.addEventListener('click', (e) => {
+            // debugger
             if(e.target.className === "delete-button") {
                 let comment = Comment.all.find((comment) => 
                 {return(comment.id == e.target.parentElement.dataset.id)})
+                // debugger
                 e.target.parentElement.remove()
                 comment.deleteComment()
             }
@@ -58,7 +60,7 @@ class Comment {
             commentInput.value = ""
         })
         .catch(err => console.error(".catch: ", err))
-        alert("Comment Created.")
+        alert("Comment Created. Please refresh to Delete.")
     }
 
     deleteComment() {
@@ -68,11 +70,6 @@ class Comment {
         .then(resp => {
             console.log(resp)
             return resp.json()
-        })
-        .then(data => {
-            if (data.status === 204) {
-                alert("Comment Deleted Please Refresh")
-            }
         })
         .catch(err => console.error(err))
         alert("Comment Deleted.")
