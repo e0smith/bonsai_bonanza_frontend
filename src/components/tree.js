@@ -19,7 +19,10 @@ class Tree {
     }
 // try sort before forEach
     static render() {
-        this.all.forEach(tree => {
+        // Tree.all.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+        // let x = Tree.all
+        // let sortedTrees = function.sortBy(x, 'name');
+        Tree.all.forEach(tree => {
                 div.innerHTML += `<li data-id=${tree.id}>${tree.name}</li><br>`;
         })
         renderDiv.append(div)
@@ -44,7 +47,7 @@ class Tree {
         // image
         var imageURL = tree.image
         var img = document.createElement('img')
-        img.src = imageURL
+        img.src = imageURL 
 
         // add innerText
         h1.innerText = tree.name
@@ -74,11 +77,24 @@ class Tree {
         
         // styling
         div.style.display = "none"
+        // console.log(document.getElementById("sort"))
+        if(document.getElementById("sort") != null){
+            document.getElementById("sort").remove()
+        }
+        
 
         // homebutton logic
         button.addEventListener('click', function(){
-                showDiv.innerHTML = ""
-                div.style.display = ""
+                window.location.reload()
         })
+
+
+    }
+    static sortButton() {
+        Tree.all.sort((a, b) => a.name.localeCompare(b.name))
+        renderDiv.innerHTML = ""
+        div.innerHTML = ""
+        Tree.render()
+        getTreeInfo()
     }
 }

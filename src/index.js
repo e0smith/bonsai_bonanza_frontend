@@ -15,7 +15,14 @@ function fetchTrees() {
         data.forEach(tree => new Tree(tree))
         Tree.render()
         getTreeInfo()
+        sortButton()
 })
+}
+
+function sortButton() {
+    let sortToDiv = document.createElement('btn')
+    sortToDiv.innerHTML = `<input id="sort" type="button" value="Sort" onclick="Tree.sortButton();"/>`
+    renderDiv.prepend(sortToDiv)
 }
 
 function getTreeInfo() {
@@ -25,4 +32,3 @@ function getTreeInfo() {
         label.addEventListener('click', () => Tree.getInfo(label))
     }
 }
-
