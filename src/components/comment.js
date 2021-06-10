@@ -14,11 +14,9 @@ class Comment {
         a.id = "comment-container"
         // used for fetch call
         a.addEventListener('click', (e) => {
-            // debugger
             if(e.target.className === "delete-button") {
                 let comment = Comment.all.find((comment) => 
                 {return(comment.id == e.target.parentElement.dataset.id)})
-                // debugger
                 e.target.parentElement.remove()
                 comment.deleteComment()
             }
@@ -34,7 +32,6 @@ class Comment {
     }
 
     static createComment(event, commentInput) {
-        // let label = event.target
         let id = event.target.dataset.id
         fetch(`${treeURL}/${id}/comments`, {
             method: "POST",

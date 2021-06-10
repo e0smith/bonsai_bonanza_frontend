@@ -17,17 +17,14 @@ class Tree {
         this.comments = comments.map(c => new Comment(c))
         Tree.all.push(this)
     }
-// try sort before forEach
+
     static render() {
-        // Tree.all.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
-        // let x = Tree.all
-        // let sortedTrees = function.sortBy(x, 'name');
         Tree.all.forEach(tree => {
                 div.innerHTML += `<li data-id=${tree.id}>${tree.name}</li><br>`;
         })
         renderDiv.append(div)
     }
-// change to instance method (maybe)
+
     static getInfo(label) {
         // find tree
         let id = parseInt(label.dataset.id)
@@ -77,7 +74,6 @@ class Tree {
         
         // styling
         div.style.display = "none"
-        // console.log(document.getElementById("sort"))
         if(document.getElementById("sort") != null){
             document.getElementById("sort").remove()
         }
@@ -90,6 +86,7 @@ class Tree {
 
 
     }
+    // tree list sort button (A-Z)
     static sortButton() {
         Tree.all.sort((a, b) => a.name.localeCompare(b.name))
         renderDiv.innerHTML = ""
